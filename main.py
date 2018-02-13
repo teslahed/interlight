@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #import light python script contains LED code.
 import light
 import os
