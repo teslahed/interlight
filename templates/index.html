@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+        <title>RGB LED controller</title>
+        <style>
+
+/* The following code handles the slider visual formatting for the red, green and blue sliders.*/ 
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.sliderred {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #ffcccc; /* Slider Colour Chris Telford edit */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.sliderred:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.sliderred::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #FF0000; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.sliderred::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+/* The slider itself */
+.slidergreen {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #ccffcc; /* Green Slider Chris Telford edit */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slidergreen:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slidergreen::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #00ff00; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slidergreen::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+/* The slider itself */
+.sliderblue {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #ccccff; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.sliderblue:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.sliderblue::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #0000ff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.sliderblue::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+</style>
+
+    </head>
+
+    <body background="/static/RGBbackground.jpg">
+
+        <p><h1>RGB LED Controller</h1></p>
+
+        <p>Chris Telford's RGB LED Controller. Written in Python3 to run on a Flask based rapsberry pi server. This controls my 10W RGB LED. </p>
+
+        <p>
+            <button type='button' id='led_on'>LED On</button>
+            <button type='button' id='led_off'>LED Off</button>
+        </p>
+
+        <div class="slidecontainer">
+            <input type="range" min="0" max="255" value="0" class="sliderred" id="redrange">
+            <p>Value: <span id="reddemo"></span></p>
+        </div>
+
+
+        <div class="slidecontainer">
+            <input type="range" min="0" max="255" value="0" class="slidergreen" id="greenrange">
+            <p>Value: <span id="greendemo"></span></p>
+        </div>
+
+        <div class="slidecontainer">
+            <input type="range" min="0" max="255" value="0" class="sliderblue" id="bluerange">
+            <p>Value: <span id="bluedemo"></span></p>
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+
+<script>
+    $(document).ready(function() {
+        var $redrange = $("#redrange"),
+            $greenrange = $("#greenrange"),
+            $bluerange = $("#bluerange");
+
+        $redrange.change(function() {
+            $.post('/red/'+ $redrange.val());
+            $("#reddemo").text($redrange.val());
+        });
+
+        $greenrange.change(function() {
+            $.post('/green/'+ $greenrange.val());  <!--got stuck here was $(this).val());-->
+            $("#greendemo").text($greenrange.val());
+        });
+
+        $bluerange.change(function() {
+            $.post('/blue/'+ $bluerange.val());  <!--got stuck here was $(this).val());-->
+            $("#bluedemo").text($bluerange.val());
+        });
+
+        $('#led_on').click(function() {
+            console.log('LED on');
+            $.post('/red/255')
+            $.post('/green/230')
+            $.post('/blue/230')
+        });
+        $('#led_off').click(function() {
+            console.log('LED Off');
+       	    $.post('/red/0')
+	        $.post('/green/0')
+	        $.post('/blue/0')  
+        });
+    });
+</script>
+
+
+</body>
+</html>
+
+
