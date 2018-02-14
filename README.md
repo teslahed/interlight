@@ -12,9 +12,13 @@ The Pi is used to generate the PWM signal (instead of an arduino or 555 timer) s
 Software used;
 
 Raspbian on the Raspberry Pi model B.             https://www.raspberrypi.org/downloads/raspbian/
+
 pigpio library on the raspberry pi.               http://abyz.me.uk/rpi/pigpio/
+
 Flask for the webserver. (main.py).               http://flask.pocoo.org/
+
 Python3 for the LED control software. (light.py)  https://www.python.org/download/releases/3.0/
+
 HTML & Javascript for the website. (index.html)   https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 I am not very experienced with any of these languages. If you spot mistakes, that's to be expected. Suggestions are welcome. It works and doesn't give error messages (at the moment).
