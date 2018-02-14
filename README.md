@@ -11,10 +11,11 @@ The Pi is used to generate the PWM signal (instead of an arduino or 555 timer) s
 
 Software used;
 
-Raspbian on the Raspberry Pi model B.
-Flask for the webserver. (main.py)
-Python3 for the LED control software. (light.py)
-HTML & Javascript for the website. (index.html)
+Raspbian on the Raspberry Pi model B.             https://www.raspberrypi.org/downloads/raspbian/
+pigpio library on the raspberry pi.               http://abyz.me.uk/rpi/pigpio/
+Flask for the webserver. (main.py).               http://flask.pocoo.org/
+Python3 for the LED control software. (light.py)  https://www.python.org/download/releases/3.0/
+HTML & Javascript for the website. (index.html)   https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 I am not very experienced with any of these languages. If you spot mistakes, that's to be expected. Suggestions are welcome. It works and doesn't give error messages (at the moment).
 
@@ -35,4 +36,10 @@ I have used a 'mini 360 DC to DC step down buck converter module' switching powe
 You could use a cheap and simple low power through hole RGB LED and some resistors wired directly to the raspberry pi's GPIO pins if you wanted to play with the software before spending more money on LED hardware.
 
 Please feel free to ask questions or make comments if you have any. 
+
+Future Possibilities
+
+Using different LED driver boards and more powerful RGB LED chips could make the project more interesting.
+
+I used an original raspberry pi model B because i had one in a drawer. If doing the project from scratch I would use a raspberry pi zero W because they are physically much smaller and have better connectivity (built in wifi). https://www.modmypi.com/raspberry-pi/raspberry-pi-zero-board-379/rpi-zero-board/raspberry-pi-zero-wireless/
 
