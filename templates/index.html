@@ -126,6 +126,7 @@
         <p><h1>RGB LED Controller</h1></p>
 
         <p>Chris Telford's RGB LED Controller. Written in Python3 to run on a Flask based rapsberry pi server. This controls my 10W RGB LED. </p>
+        <p>Values range from 0 (Off) to 255 (fully On). Each of the three channels has 8 bits of resolution to give 24 bit colour mixing effects</p>
 
         <p>
             <button type='button' id='led_on'>LED On</button>
@@ -134,19 +135,20 @@
 
         <div class="slidecontainer">
             <input type="range" min="0" max="255" value="0" class="sliderred" id="redrange">
-            <p>Value: <span id="reddemo"></span></p>
+            <p>Red Value: <span id="reddemo"></span></p>
         </div>
 
 
         <div class="slidecontainer">
             <input type="range" min="0" max="255" value="0" class="slidergreen" id="greenrange">
-            <p>Value: <span id="greendemo"></span></p>
+            <p>Green Value: <span id="greendemo"></span></p>
         </div>
 
         <div class="slidecontainer">
             <input type="range" min="0" max="255" value="0" class="sliderblue" id="bluerange">
-            <p>Value: <span id="bluedemo"></span></p>
+            <p>Blue Value: <span id="bluedemo"></span></p>
         </div>
+
 
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -164,12 +166,12 @@
         });
 
         $greenrange.change(function() {
-            $.post('/green/'+ $greenrange.val());  <!--got stuck here was $(this).val());-->
+            $.post('/green/'+ $greenrange.val()); 
             $("#greendemo").text($greenrange.val());
         });
 
         $bluerange.change(function() {
-            $.post('/blue/'+ $bluerange.val());  <!--got stuck here was $(this).val());-->
+            $.post('/blue/'+ $bluerange.val()); 
             $("#bluedemo").text($bluerange.val());
         });
 
