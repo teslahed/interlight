@@ -6,9 +6,7 @@ from light import interlight
 # Create the pi thing.
 pi_light = interlight()
 
-# Print the current switch state.
-red = pi_light.read_redbright(redled)
-print('Redbright status: {0}'.format(red))
+
 
 temp + pi_light.tempread
 print(measure_temp())
