@@ -9,7 +9,7 @@ pi_light = interlight()
 
 
 temp = pi_light.tempread
-print(measure_temp())
+print(tempread())
 time.sleep(1)
 
 #blink LED forever
