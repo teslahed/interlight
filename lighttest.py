@@ -10,6 +10,10 @@ pi_light = interlight()
 red = pi_light.read_redbright(redled)
 print('Redbright status: {0}'.format(red))
 
+temp + pi_light.tempread
+print(measure_temp())
+time.sleep(1)
+
 #blink LED forever
 print('Blinking LED control-C to stop')
 while True:
