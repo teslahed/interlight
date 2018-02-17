@@ -1,4 +1,4 @@
-This is the Readme for the 'Interlight' RGB LED controller project.
+This is the Readme for the 'Interlight' RGB LED controller project..
 
 'Interlight' Internet enabled RGB LED Controller. Programmed by Chris Telford christophertelford@yahoo.com.
 Based on examples including https://www.youtube.com/watch?v=L55QYFnnrgo from Adafruit Industries.
