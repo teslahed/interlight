@@ -1,7 +1,7 @@
 
 import time
 from light import interlight
-
+import os
 
 # Create the pi thing.
 pi_light = interlight()
