@@ -11,6 +11,8 @@
 
 import pigpio       #import pigpio library.
 pi = pigpio.pi()    #set 'pi' to access local pi pins. pigpio setup.
+import os           #for temp sensor stuff
+import time         #for temp sensor stuff
 
 #set the pins for the colour channels going to the LED controller hardware from the pi. Ground connection also required.
 redled = 23
@@ -27,7 +29,9 @@ class interlight(object):
     def __int__(self):
         """RGB Controller"""
         
-
+    def tempread(self, value):      #for temp sensor stuff
+        temp = os.popen("vcgencmd measure_temp").readline()
+        return (temp.replace("temp=",""))
 
     def set_redbright(self, value):
         pi.set_PWM_dutycycle(redled, (value))
