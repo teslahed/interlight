@@ -8,7 +8,7 @@ pi_light = interlight()
 
 
 
-temp + pi_light.tempread
+temp = pi_light.tempread
 print(measure_temp())
 time.sleep(1)
 
