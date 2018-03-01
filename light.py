@@ -35,9 +35,9 @@ class interlight(object):
     def __int__(self):
         """RGB Controller"""
         
-    def measure_temp(self, value):      #for temp sensor stuff
-        temp = os.popen("vcgencmd measure_temp").readline()
-        return (temp.replace("temp=",""))
+#    def measure_temp(self):      #for temp sensor stuff
+ #       temp = os.popen("vcgencmd measure_temp").readline()
+  #      return (temp.replace("temp=",""))
 
     def set_redbright(self, value):
         pi.set_PWM_dutycycle(redled, (value))
