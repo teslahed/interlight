@@ -17,7 +17,8 @@ pi_light = light.interlight()
 #Index route for main html page.
 @app.route("/")
 def index():
-      return render_template('index.html')
+      temp = pi_light.measure_temp()
+      return render_template('index.html', temp=temp)
 
 #favicon location
 @app.route("/favicon.ico")
@@ -54,11 +55,7 @@ def blue(state):
     pi_light.set_bluebright(255-state)
     return ''  # returns nothing to remove 500 error.
 
-#route for temperature reading
-@app.route('/temp/<int:state>', methods=['POST'])
-def temp(state):
-    temp=light.measure_temp
-    return ''
+
 
 
 #Start the flask debug server listening on the pi port 5000 by default:
