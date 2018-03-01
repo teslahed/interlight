@@ -21,6 +21,12 @@ blueled = 25
 
     
 
+
+def measure_temp():
+    temp = os.popen("vcgencmd measure_temp").readline()
+    return (temp.replace("temp=",""))
+
+
 #interlight object;
 class interlight(object):
     """Raspberry Pi RGB LED controller. Chris Telford."""
@@ -29,7 +35,7 @@ class interlight(object):
     def __int__(self):
         """RGB Controller"""
         
-    def tempread(self, value):      #for temp sensor stuff
+    def measure_temp(self, value):      #for temp sensor stuff
         temp = os.popen("vcgencmd measure_temp").readline()
         return (temp.replace("temp=",""))
 
