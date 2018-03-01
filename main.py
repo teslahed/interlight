@@ -17,7 +17,7 @@ pi_light = light.interlight()
 #Index route for main html page.
 @app.route("/")
 def index():
-      temp = pi_light.measure_temp()
+      temp = light.measure_temp()
       return render_template('index.html', temp=temp)
 
 #favicon location
