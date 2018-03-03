@@ -65,10 +65,11 @@ def blue(state):
 def temp():
     def get_temp():
         while True:
-            temp = os.popen("vcgencmd measure_temp").readline()
+            temperature = os.popen("vcgencmd measure_temp").readline()
 #            yield('{0}\n\n'.format(temp))
 #            yield('data: {0}\n\n'.format(random.randrange(0,100)))
-            yield('data: {0}\n\n'.format(temp))
+           # yield (temp.replace("temperature=",""))
+            yield('data: {0}\n\n'.format(temperature))
 
             time.sleep(1.0)
     return Response(get_temp(), mimetype='text/event-stream')

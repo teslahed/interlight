@@ -123,22 +123,27 @@
     </head>
 
 
-   <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">RGB LED Controller</h1>
-          <br>
-          <p>Chris Telford's RGB LED Controller. Written in Python3 to run on a Flask based rapsberry pi server. This controls my 10W RGB LED.</p>
-          <p>Values range from 0 (Off) to 255 (fully On). Each of the three channels has 8 bits of resolution to give 24 bit colour mixing.</p>
-          <p>Rasbperry Pi CPU <span id='temp_value'>{{0}}</span> </p>
-        </div>
-      </div>
+   <!-- Title for website done as 3 columns only using centre column -->
+    <div class="row">
+    
+    
+    
+    <div class="col-sm-12" align="center">
 
-<div class="container">
+      <h1>RGB LED Controller</h1>
+          <br>
+          <p><h3><strong>Rasbperry Pi CPU <span id='temp_value'>{{0}}</span> </strong></h3></p>
+    </div>
+
+
+    </div>
+    
+
+    <div class="container-fluid">
         <!-- Example row of columns -->
         <div class="row">
-          <div class="col-md-4">
-            <h2>Red</h2>
+          <div class="col-sm-4">
+            <h2 class="text-danger">Red</h2>
             <p>Switches and sliders</p>
 
             <div class="slidecontainer">
@@ -149,27 +154,26 @@
 
 
             <!--<button type='button' id='red_on'>Red LED On</button>-->
-            <button type='button' id='red_on' class='btn btn-danger'>Red LED On</button>
-            <button type='button' id='red_off' class='btn btn-danger'>Red LED Off</button>
-</div>
-           <div class="col-md-4">
-            <h2>Green</h2>
+            <button type='button' id='red_on' class='btn btn-danger'>Red On</button>
+            <button type='button' id='red_off' class='btn btn-danger'>Red Off</button>
+        </div>
+        
+          <div class="col-sm-4">
+            <h2 class="text-success">Green</h2>
             <p>Switches and sliders</p>
-              <div class="slidecontainer">
+         
+            <div class="slidecontainer">
             <input type="range" min="0" max="255" value="0" class="slidergreen" id="greenrange">
             <p>Green Value: <span id="greendemo"></span></p>
-            <button type='button' id='green_on' class='btn btn-success'>Green LED On</button>
-            <button type='button' id='green_off' class='btn btn-success'>Green LED Off</button>
+            <button type='button' id='green_on' class='btn btn-success'>Green On</button>
+            <button type='button' id='green_off' class='btn btn-success'>Green Off</button>
 
-
-
-
-        </div>
+         </div>
 
            
           </div>
-          <div class="col-md-4">
-            <h2>Blue</h2>
+          <div class="col-sm-4">
+            <h2 class="text-primary">Blue</h2>
             <p>Switches and sliders</p>
 
 
@@ -177,8 +181,8 @@
             <input type="range" min="0" max="255" value="0" class="sliderblue" id="bluerange">
             <p>Blue Value: <span id="bluedemo"></span></p>
 
-            <button type='button' id='blue_on' class='btn btn-primary'>Blue LED On</button>
-            <button type='button' id='blue_off' class='btn btn-primary'>Blue LED Off</button>
+            <button type='button' id='blue_on' class='btn btn-primary'>Blue On</button>
+            <button type='button' id='blue_off' class='btn btn-primary'>Blue Off</button>
 
 
          </div>
@@ -189,23 +193,29 @@
 
 <div class="row">
  <div class="col-md-4">
-            
+<br><br><br>
+<h2>About</h2>
+<br>
+<p>Chris Telford's RGB LED Controller. Written in Python3 to run on a Flask based rapsberry pi server. This controls my 10W RGB LED.</p>            
             
 </div>
            <div class="col-md-4">
             <br><br><br>
-            <h2>White</h2>
-            <p></p>
+            <h2><mark>White</mark></h2>
+            <p>Turn on all LEDs</p>
            <p>
-            <button type='button' id='led_on'>LED On</button>
-            <button type='button' id='led_off'>LED Off</button>
+            <button type='button' id='led_on' class='btn btn-default'>LED On</button>
+            <button type='button' id='led_off' class='btn btn-default'>LED Off</button>
         </p>
 
 
 </div>      
-  </div>
+  
    <div class="col-md-4">
-       
+  <br><br><br>
+    <h2>Details</h2>
+    <br>
+   <p>Values range from 0 (Off) to 255 (fully On). Each of the three channels has 8 bits of resolution to give 24 bit colour mixing.</p>       
 
        
         </div>
