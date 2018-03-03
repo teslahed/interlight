@@ -130,7 +130,7 @@
           <br>
           <p>Chris Telford's RGB LED Controller. Written in Python3 to run on a Flask based rapsberry pi server. This controls my 10W RGB LED.</p>
           <p>Values range from 0 (Off) to 255 (fully On). Each of the three channels has 8 bits of resolution to give 24 bit colour mixing.</p>
-          <p>Rasbperry Pi Temperature = <span id='temp_value'>{{0}}</span> </p>
+          <p>Rasbperry Pi CPU <span id='temp_value'>{{0}}</span> </p>
         </div>
       </div>
 
@@ -161,6 +161,9 @@
             <button type='button' id='green_on' class='btn btn-success'>Green LED On</button>
             <button type='button' id='green_off' class='btn btn-success'>Green LED Off</button>
 
+
+
+
         </div>
 
            
@@ -179,15 +182,33 @@
 
 
          </div>
-
+</div>  
+</div>
     <body background="/static/RGBbackground.jpg">
 
 
-        <p>
+<div class="row">
+ <div class="col-md-4">
+            
+            
+</div>
+           <div class="col-md-4">
+            <br><br><br>
+            <h2>White</h2>
+            <p></p>
+           <p>
             <button type='button' id='led_on'>LED On</button>
             <button type='button' id='led_off'>LED Off</button>
         </p>
 
+
+</div>      
+  </div>
+   <div class="col-md-4">
+       
+
+       
+        </div>
 
 
 
