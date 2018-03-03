@@ -20,8 +20,10 @@ pi_light = light.interlight()
 #Index route for main html page.
 @app.route("/")
 def index():
-      temp1 = light.measure_temp()
-      return render_template('index.html' , temp=temp1)
+      #temp1 = light.measure_temp()
+      #return render_template('index.html' , temp=temp1)
+      return render_template('index.html')
+
 
 #favicon location
 @app.route("/favicon.ico")
@@ -63,7 +65,11 @@ def blue(state):
 def temp():
     def get_temp():
         while True:
-            yield('Value: {0}'.format(random.randrange(0,100)))
+            temp = os.popen("vcgencmd measure_temp").readline()
+#            yield('{0}\n\n'.format(temp))
+#            yield('data: {0}\n\n'.format(random.randrange(0,100)))
+            yield('data: {0}\n\n'.format(temp))
+
             time.sleep(1.0)
     return Response(get_temp(), mimetype='text/event-stream')
 

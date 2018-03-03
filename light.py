@@ -22,11 +22,11 @@ blueled = 25
     
 
 
-def measure_temp():
-      #while True:        
-        temp = os.popen("vcgencmd measure_temp").readline()
-        return (temp.replace("temp=",""))
-       # time.sleep(1)
+#def measure_temp():
+   #     while True:        
+  #          temp = os.popen("vcgencmd measure_temp").readline()
+ #           return (temp.replace("temp=",""))
+#            time.sleep(1)
 
 #interlight object;
 class interlight(object):
