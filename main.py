@@ -7,6 +7,9 @@ import os
 #import flask server stuff.
 from flask import *
 
+import time
+import random
+
 #create Flask app and global pi 'light' object. Static folder for html pics.
 app = Flask(__name__, static_url_path='/static')
 pi_light = light.interlight()
@@ -56,17 +59,16 @@ def blue(state):
     return ''  # returns nothing to remove 500 error.
 
 #Route for temp sensor reading real time update
-#@app.route('/temp/<int:state>', methods=['POST'])
-#def temp(state):
- #   return  light.measure_temp(temp=temp)
-  #  temp=temp
-   # return ''
-
-
-
+@app.route('/temp/')
+def temp():
+    def get_temp():
+        while True:
+            yield('Value: {0}'.format(random.randrange(0,100)))
+            time.sleep(1.0)
+    return Response(get_temp(), mimetype='text/event-stream')
 
 #Start the flask debug server listening on the pi port 5000 by default:
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True, threaded=True)
 
 
