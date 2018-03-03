@@ -8,7 +8,6 @@ import os
 from flask import *
 
 import time
-import random
 
 #create Flask app and global pi 'light' object. Static folder for html pics.
 app = Flask(__name__, static_url_path='/static')
@@ -20,8 +19,6 @@ pi_light = light.interlight()
 #Index route for main html page.
 @app.route("/")
 def index():
-      #temp1 = light.measure_temp()
-      #return render_template('index.html' , temp=temp1)
       return render_template('index.html')
 
 
@@ -30,17 +27,6 @@ def index():
 def favicon():
       return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-
-#LED on and off button route
-@app.route('/led/<int:state>', methods=['POST'])
-def led(state):
-    if state == 0:
-        pi_light.set_redbright(255)      #inverted for my circuit
-        pi_light.set_greenbright(255)     #change these two lines for on and off / pwm. use 'led' instead of 'bright'.
-        pi_light.set_greenbright(255)
-    else:
-       return ('Unknown LED state!', 400)
-    return ('', 204)
 
 #Route to dim RED LED channel. Reversed for my LEDs (255-)
 @app.route('/red/<int:state>', methods=['POST'])
@@ -60,17 +46,14 @@ def blue(state):
     pi_light.set_bluebright(255-state)
     return ''  # returns nothing to remove 500 error.
 
+
 #Route for temp sensor reading real time update
 @app.route('/temp/')
 def temp():
     def get_temp():
         while True:
             temperature = os.popen("vcgencmd measure_temp").readline()
-#            yield('{0}\n\n'.format(temp))
-#            yield('data: {0}\n\n'.format(random.randrange(0,100)))
-           # yield (temp.replace("temperature=",""))
             yield('data: {0}\n\n'.format(temperature))
-
             time.sleep(1.0)
     return Response(get_temp(), mimetype='text/event-stream')
 
