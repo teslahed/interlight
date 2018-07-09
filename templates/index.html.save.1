@@ -203,7 +203,7 @@
 <br><br><br>
 <h2>Details</h2>
 <br>
-<p>Values range from 0 (Off) to 4095 (fully On). Each of the three channels has 12 bits of resolution to give 36 bit colour mixing.</p>       
+<p>Values range from 0 (Off) to 255 (fully On). Each of the three channels has 8 bits of resolution to give 24 bit colour mixing.</p>       
 </div>
 
 
@@ -235,9 +235,9 @@
 
         $('#led_on').click(function() {
             console.log('LED on');
-            $.post('/red/4095')
-            $.post('/green/2203')
-            $.post('/blue/341')
+            $.post('/red/255')
+            $.post('/green/230')
+            $.post('/blue/230')
         });
         $('#led_off').click(function() {
             console.log('LED Off');
@@ -249,16 +249,16 @@
 
         $('#red_on').click(function() {
             console.log('Red on');
-            $.post('/red/4095')
+            $.post('/red/255')
             
         });
         $('#green_on').click(function() {
             console.log('Green on');
-            $.post('/green/4095')
+            $.post('/green/255')
         });
         $('#blue_on').click(function() {
             console.log('Blue on');
-            $.post('/blue/4095')
+            $.post('/blue/255')
         });
 
 

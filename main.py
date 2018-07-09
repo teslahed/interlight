@@ -31,19 +31,19 @@ def favicon():
 #Route to dim RED LED channel. Reversed for my LEDs (255-)
 @app.route('/red/<int:state>', methods=['POST'])
 def red(state):
-    pi_light.set_redbright(255-state)
+    pi_light.set_redbright(state)
     return ''  # returns nothing to remove 500 error.
 
 #Route to dim Green LED channel. Reveresed.
 @app.route('/green/<int:state>', methods=['POST'])
 def green(state):
-    pi_light.set_greenbright(255-state)
+    pi_light.set_greenbright(state)
     return ''  # returns nothing to remove 500 error.
 
 #Route to dim Blue LED channel. Reversed.
 @app.route('/blue/<int:state>', methods=['POST'])
 def blue(state):
-    pi_light.set_bluebright(255-state)
+    pi_light.set_bluebright(state)
     return ''  # returns nothing to remove 500 error.
 
 
